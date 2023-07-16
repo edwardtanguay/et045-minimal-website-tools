@@ -210,4 +210,15 @@ code.block {
 			}
 		}
 	}
+
+	span[data-tooltip] {
+		border-bottom: 0;
+		cursor: default;
+
+		&:before,
+		&:after {
+			display: none;
+		}
+	}
+
 }

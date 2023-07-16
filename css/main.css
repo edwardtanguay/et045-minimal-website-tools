@@ -174,4 +174,11 @@ code.block {
     padding-top: 0;
     padding-bottom: 0;
   }
+  span[data-tooltip] {
+    border-bottom: 0;
+    cursor: default;
+  }
+  span[data-tooltip]:before, span[data-tooltip]:after {
+    display: none;
+  }
 }/*# sourceMappingURL=main.css.map */
