@@ -1,0 +1,213 @@
+$active-link: green;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.animate__animated.animate__zoomIn {
+	--animate-duration: .2s;
+}
+
+.animate__animated.animate__lightSpeedInLeft {
+	--animate-duration: .2s;
+}
+
+nav {
+	background-color: #111;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	margin-bottom: 2rem;
+}
+
+ul {
+	margin-left: 1rem;
+}
+
+strong {
+	color: rgb(233, 233, 144);
+}
+
+details {
+	ul {
+		margin-left: 2rem;
+	}
+}
+
+code,
+pre {
+	color: rgb(158, 82, 31);
+}
+
+code.block {
+	padding: 1rem 1rem 0 1rem;
+}
+
+.pageCounter {
+
+	section {
+		display: grid;
+		place-items: center;
+		text-align: center;
+	}
+
+	.countArea {
+		background-color: #111;
+		width: 10rem;
+		height: 10rem;
+		display: grid;
+		place-items: center;
+		border-radius: 1rem;
+		font-size: 4rem;
+	}
+}
+
+.pageEmojis {
+	ul.checkmarks {
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding-left: 2rem;
+			text-indent: -1.7rem;
+			list-style-type: none;
+
+			&:before {
+				content: '✅️ ';
+			}
+		}
+	}
+}
+
+.pageSubmenu {
+	h2 {
+		color: darken($active-link, 7%);
+		margin-bottom: 1rem;
+	}
+
+	nav.submenu {
+		ul {
+			li {
+				cursor: pointer;
+
+				&:hover {
+					color: lighten($active-link, 20%);
+				}
+
+				&.active {
+					color: $active-link;
+				}
+			}
+		}
+	}
+}
+
+.pageSearch {
+	input::placeholder {
+		color: #333;
+		font-size: 1.1rem;
+	}
+
+	section div.all {
+		display: flex;
+		flex-wrap: wrap;
+		gap: .5rem;
+		font-size: .8rem;
+		justify-content: space-around;
+
+		div {
+			display: grid;
+			place-items: center;
+			padding: .5rem;
+			background-color: #292929;
+			min-width: 6rem;
+			width: 22%
+		}
+	}
+}
+
+.pageForm {
+	form {
+		background-color: #111;
+		padding: 1rem;
+		border-radius: .5rem;
+
+		input::placeholder {
+			color: #333;
+			font-size: 1.1rem;
+		}
+
+		small.rangeControl {
+			display: flex;
+			justify-content: space-between;
+			margin-top: -1.4rem;
+		}
+
+		button:focus {
+			animation: fadeOutRight;
+			animation-duration: 1s;
+		}
+	}
+
+	.formData {
+		padding-top: 2rem;
+		margin-left: 2rem;
+
+		.row {
+			height: 2rem;
+
+			.label {
+				color: #888;
+			}
+		}
+	}
+}
+
+.pageTable {
+	table {
+		margin-top: 2rem;
+
+		thead {
+			th {
+				text-align: center;
+				color: rgb(226, 208, 156);
+			}
+		}
+
+		tbody {
+			tr {
+				td:first-of-type {
+					color: rgb(149, 216, 118);
+					white-space: nowrap;
+				}
+
+				td:hover {
+					color: yellow;
+					transition: color 2s;
+					animation: headShake;
+					animation-duration: 1s;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	body.pageIndex nav {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem 1rem 1rem 2rem;
+
+		ul {
+			margin: 0 0 0 -1rem !important;
+			padding: 0 !important;
+			flex-wrap: wrap;
+
+			li {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+		}
+	}
+}

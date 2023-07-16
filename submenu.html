@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+	  data-theme="dark">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<script defer
+			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<link rel="stylesheet"
+		  href="css/main.css">
+		    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+	<title>Submenu</title>
+</head>
+
+<body x-data="{subpage: 'p1'}"
+	  class="pageSubmenu">
+	<main class="container">
+		<nav>
+			<ul>
+				<li class="animate__animated animate__lightSpeedInLeft"><strong>submenu</strong></li>
+			</ul>
+			<ul>
+				<li><a href="index.html">home</a></li>
+			</ul>
+		</nav>
+		<p>Alpine.js allows you to create simple menus which <span data-tooltip="as when using React Router">display
+				areas of the page immediately</span>, without a server round-trip.</p>
+		<nav class="submenu">
+			<ul>
+				<li @click="subpage = 'p1'"
+					:class="subpage==='p1' ? 'active' : ''">Intro</li>
+				<li @click="subpage = 'p2'"
+					:class="subpage==='p2' ? 'active' : ''">Similar</li>
+				<li @click="subpage = 'p3'"
+					:class="subpage==='p3' ? 'active' : ''">Fast</li>
+				<li @click="subpage = 'p4'"
+					:class="subpage==='p4' ? 'active' : ''">URL</li>
+				<li @click="subpage = 'p5'"
+					:class="subpage==='p5' ? 'active' : ''">Uses</li>
+			</ul>
+		</nav>
+		<section x-show="subpage==='p1'">
+			<h2>Intro</h2>
+			<p>With simple HTML attributes, Alpine.js allows you to turn on and off areas on the screen, or add or
+				remove classes based on the value of a variable.</p>
+		</section>
+		<section x-show="subpage==='p2'">
+			<h2>Similarities to Vue.js</h2>
+			<p>Alpine.js has a syntax that reminds one of Vue.js, but the library is much simpler. For instance, you
+				don't have to add a JavaScript object on your page in order to use it. You simply add variables in HTML
+				elements themselves.</p>
+			<code class="block">
+				<pre>
+					&lt;body x-data=&quot;{subpage: &#39;p1&#39;}&quot;&gt;
+
+					&lt;li @click=&quot;subpage = &#39;p1&#39;&quot; :class=&quot;subpage===&#39;p1&#39; ?
+					&#39;active&#39; : &#39;&#39;&quot;&gt;Intro&lt;/li&gt;
+
+					&lt;section x-show=&quot;subpage===&#39;p1&#39;&quot;&gt;</pre>
+			</code>
+		</section>
+		<section x-show="subpage==='p3'">
+			<h2>Good user experience on mobile devices</h2>
+			<p>Because this form of menus do not require a round-trip to the server, the user experiences the site
+				as
+				much faster on mobile devices.</p>
+		</section>
+		<section x-show="subpage==='p4'">
+			<h2>Bookmarking must be programmed</h2>
+			<p>Note that with this solution, when you click a menu link, it is not reflected in the URL.</p>
+			<p>This would have to be programmed with JavaScript, similar to the Router in <a
+				   href="https://starters.tanguay.eu/list/darkViteVanillaMenu"
+				   target="_blank">this Vite Vanilla starter</a>.</p>
+		</section>
+		<section x-show="subpage==='p5'">
+			<h2>Other uses</h2>
+			<p>Alpine's feature that allows you to easily define state variables which can turn hide and show
+				various
+				elements on the page, or change their appearance based on what the use sets with button and other
+				controls, can be used in many ways:</p>
+			<ul>
+				<li>interactive forms</li>
+				<li>games</li>
+				<li>learning tools such as flashcards</li>
+				<li>creative layouts and menus that allow the user to turn on only what he wants to see</li>
+			</ul>
+		</section>
+	</main>
+</body>
+
+</html>

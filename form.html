@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"
+	  data-theme="dark">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0">
+	<script defer
+			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<link rel="stylesheet"
+		  href="css/main.css">
+		    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+	<title>Form</title>
+</head>
+
+<body x-data="{formData: {firstName: '', lastName: '', email: '', position: '', framework: '', cvSubmitted: false, termsAgreedTo: false, publishProfile: false, startDate: '', applicationProcessSatisfaction: 5}}"
+	  class="pageForm">
+	<main class="container">
+		<nav>
+			<ul>
+				<li class="animate__animated animate__lightSpeedInLeft"><strong>form</strong></li>
+			</ul>
+			<ul>
+				<li><a href="index.html">home</a></li>
+			</ul>
+		</nav>
+		<section>
+			<p><strong>Alpine.js</strong> and <strong>Pico.css</strong> make form building much more straight-forward
+				and provides many
+				simplifications that improve the user-experience and standardize the data being sent to the server, e.g.
+				checkboxes are sent as boolean <code>true</code> or <code>false</code> instead of a name or blank as on
+				standard HTML forms.</p>
+			<p>The <code>x-model</code> attribute works well with forms and provides a state-variable experience similar
+				to React and Vue.js where the application is aware of the changes of each of the form controls as the
+				user types and clicks on these controls, which is shown below on the right.</p>
+			<p>Also note that we use the <strong>Pico.CSS</strong> element <code>&lt;div
+					class=&quot;grid&quot;&gt;</code> which gives this grid a nice responsive feature, e.g. the right
+				side is shown below the form on mobile view.</p>
+			<div class="grid">
+				<div>
+					<form>
+						<div class="grid">
+							<label for="firstname">
+								First name
+								<input type="text"
+									   x-model="formData.firstName">
+							</label>
+
+							<label for="lastname">
+								Last name
+								<input type="text"
+									   x-model="formData.lastName">
+							</label>
+						</div>
+
+						<label for="email">Email</label>
+						<input type="text"
+							   x-model="formData.email">
+						<small>Email is optional, but it will enable us to notify you of new features.</small>
+
+						<label for="position">Position</label>
+						<select id="position"
+								x-model="formData.position">
+							<option value=""
+									selected>Select a position</option>
+							<option value="fullStack">full-stack developer</option>
+							<option value="frontend">frontend developer</option>
+							<option value="backend">backend developer</option>
+						</select>
+
+						<fieldset>
+							<legend>Framework with which you have the most experience:</legend>
+							<label for="react">
+								<input type="radio"
+									   id="react"
+									   x-model="formData.framework"
+									   name="framework"
+									   value="react">
+								React
+							</label>
+							<label for="angular">
+								<input type="radio"
+									   id="angular"
+									   x-model="formData.framework"
+									   name="framework"
+									   value="angular">
+								Angular
+							</label>
+							<label for="vuejs">
+								<input type="radio"
+									   id="vuejs"
+									   x-model="formData.framework"
+									   name="framework"
+									   value="vuejs">
+								Vue.js
+							</label>
+						</fieldset>
+
+						<fieldset>
+							<label for="cvSubmitted">
+								<input type="checkbox"
+									   x-model="formData.cvSubmitted"
+									   id="cvSubmitted">
+								I've submitted my CV
+							</label>
+							<label for="termsAgreedTo">
+								<input type="checkbox"
+									   x-model="formData.termsAgreedTo"
+									   id="termsAgreedTo">
+								I agree to the Terms and Conditions
+							</label>
+						</fieldset>
+
+						<fieldset>
+							<label for="publishProfile">
+								<input x-model="formData.publishProfile"
+									   type="checkbox"
+									   id="publishProfile"
+									   role="switch">
+								publish my profile online
+							</label>
+						</fieldset>
+
+						<label for="startDate">Date
+							<input type="date"
+								   x-model="formData.startDate"
+								   id="startDate">
+						</label>
+
+						<label for="applicationProcessSatisfaction">How satisfied are you with our application
+							process?</label>
+						<input type="range"
+							   x-model="formData.applicationProcessSatisfaction"
+							   min="0"
+							   max="10"
+							   id="applicationProcessSatisfaction">
+						<small class="rangeControl">
+							<div>bad</div>
+							<div>good</div>
+						</small>
+
+						<button @click="alert('formData = ' + JSON.stringify(formData, null, 2))">Submit</button>
+
+					</form>
+				</div>
+				<div class="formData">
+					<div class="row">
+						<span class="label">First Name:</span> <code x-show="formData.firstName.trim() !=''"
+							  x-text="formData.firstName"></code>
+					</div>
+					<div class="row">
+						<span class="label">Last Name:</span> <code x-show="formData.lastName.trim() !=''"
+							  x-text="formData.lastName"></code>
+					</div>
+					<div class="row">
+						<span class="label">Email:</span> <code x-show="formData.email.trim() !=''"
+							  x-text="formData.email"></code>
+					</div>
+					<div class="row">
+						<span class="label">Position:</span> <code x-show="formData.position.trim() !=''"
+							  x-text="formData.position"></code>
+					</div>
+					<div class="row">
+						<span class="label">Framework:</span> <code x-show="formData.framework.trim() !=''"
+							  x-text="formData.framework"></code>
+					</div>
+					<div class="row">
+						<span class="label">CV Submitted:</span> <code x-show="formData.cvSubmitted"
+							  x-text="formData.cvSubmitted"></code>
+					</div>
+					<div class="row">
+						<span class="label">Terms agreed to:</span> <code x-show="formData.termsAgreedTo"
+							  x-text="formData.termsAgreedTo"></code>
+					</div>
+					<div class="row">
+						<span class="label">Publish profile:</span> <code x-show="formData.publishProfile"
+							  x-text="formData.publishProfile"></code>
+					</div>
+					<div class="row">
+						<span class="label">Start date:</span> <code x-show="formData.startDate"
+							  x-text="formData.startDate"></code>
+					</div>
+					<div class="row">
+						<span class="label">Application process satisfaction</span> <code
+							  x-show="formData.applicationProcessSatisfaction"
+							  x-text="formData.applicationProcessSatisfaction"></code>
+					</div>
+				</div>
+			</div>
+		</section>
+</body>
+
+</html>
